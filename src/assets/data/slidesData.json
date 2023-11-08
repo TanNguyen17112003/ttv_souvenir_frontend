@@ -1,15 +1,15 @@
 {
     "slides": [
         {
-            "src": "http://localhost:3400/Slide1.png",
+            "src": "https://i.ibb.co/wCNmzVT/Slide1.png",
             "alt": "Slide 1"
         },
         {
-            "src": "http://localhost:3400/Slide2.png",
+            "src": "https://i.ibb.co/K6sHGcB/Slide2.png",
             "alt": "Slide 2"
         },
         {
-            "src": "http://localhost:3400/Slide3.png",
+            "src": "https://i.ibb.co/2Pq2pKc/Slide3.png",
             "alt": "Slide 3"
         }
     ]

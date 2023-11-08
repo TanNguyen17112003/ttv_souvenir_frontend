@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import banner from '../assets/images/description/banner.jpg'
 import banner2 from '../assets/images/description/banner2.jpg';
 import Slide from '../components/DynamicComponents/Slide'
+import slides from '../assets/data/slidesData.json';
 import { FaCarSide, FaRegListAlt, FaPhoneAlt } from 'react-icons/fa';
 import axios from "axios";
 import LatestItems from '../components/DynamicComponents/LatestItems';
@@ -10,20 +11,6 @@ import WithWrap from '../components/wrap/WithWrap';
 
 
 function Main() {
-  const slides = [
-    {
-      src: "https://i.ibb.co/DkD2RhN/Slide1.png",
-      alt: "Slide1"
-    },
-    {
-      src: "https://i.ibb.co/F6YtWkc/Slide2.png",
-      alt: "Slide2"
-    },
-    {
-      src: "https://i.ibb.co/MpnTJNP/Slide3.png",
-      alt: "Slide3"
-    }
-  ];
   const [items, setItems] = useState([]);
   useEffect(() => {
     const getItems = async() => {
@@ -45,7 +32,7 @@ function Main() {
         <div 
           className='flex w-full justify-center items-center pb-10 mx-auto h-[600px]'
         >
-          <Slide data={slides}/>
+          <Slide data={slides.slides}/>
         </div>
         {/* Description and 2 images for ttv souvenir */}
         <div className='flex py-10 mx-auto max-w-[70%] items-center justify-around'>
