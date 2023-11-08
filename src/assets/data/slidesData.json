@@ -1,0 +1,16 @@
+{
+    "slides": [
+        {
+            "src": "http://localhost:3400/Slide1.png",
+            "alt": "Slide 1"
+        },
+        {
+            "src": "http://localhost:3400/Slide2.png",
+            "alt": "Slide 2"
+        },
+        {
+            "src": "http://localhost:3400/Slide3.png",
+            "alt": "Slide 3"
+        }
+    ]
+}
