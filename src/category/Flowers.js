@@ -8,7 +8,7 @@ function Flowers() {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get("https://ttvsouvenir2-backend-717wtpicu-tan-nguyens-projects-04e006d1.vercel.app");
+                const res = await axios.get("https://ttv-souvenir-backend.vercel.app/menu/flowers");
                 console.log('Deft');
                 const items = res.data;
                 setProducts(items);

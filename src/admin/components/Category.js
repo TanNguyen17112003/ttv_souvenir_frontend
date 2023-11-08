@@ -23,7 +23,7 @@ function Category() {
         if (productIdToRemove) {
             try {
                 await axios.delete(
-                    `https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/products/${productIdToRemove}`
+                    `https://ttv-souvenir-backend.vercel.app/products/${productIdToRemove}`
                 );
                 console.log("Success");
                 window.location.reload();
@@ -42,7 +42,7 @@ function Category() {
     useEffect(() => {
         // Fetch data from API based on selected category
         const fetchData = async () => {
-            let apiUrl = "https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/menu/";
+            let apiUrl = "https://ttv-souvenir-backend.vercel.app/menu/";
             apiUrl += selectedCategory;
             const response = await fetch(apiUrl);
             const data = await response.json();

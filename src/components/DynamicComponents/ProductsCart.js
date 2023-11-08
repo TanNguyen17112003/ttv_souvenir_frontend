@@ -6,7 +6,7 @@ function ProductsCart() {
     const [listProducts, setListProducts] = useState([]);
     const userEmail = localStorage.getItem("userEmail");
     useEffect(() => {
-        const res = axios.get(`https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/cartProduct/${userEmail}`);
+        const res = axios.get(`https://ttv-souvenir-backend.vercel.app/cartProduct/${userEmail}`);
         res.then((res) => {
             let ArrayProducts = res.data;
             setListProducts(ArrayProducts);
@@ -18,7 +18,7 @@ function ProductsCart() {
     ,[])
     const handleRemoveAll = async () => {
         try {
-            await axios.delete(`https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/cart/remove/${userEmail}`);
+            await axios.delete(`https://ttv-souvenir-backend.vercel.app/cart/remove/${userEmail}`);
             console.log("Remove Succeeded")
             window.location.reload();
         }

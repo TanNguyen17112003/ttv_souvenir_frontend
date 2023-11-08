@@ -19,7 +19,7 @@ function EditProduct() {
         if (newCost !== null) {
             values["cost"] = parseInt(newCost);
         }
-        await axios.put(`https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/${productId}`, values)
+        await axios.put(`https://ttv-souvenir-backend.vercel.app/${productId}`, values)
         .then(res => {
             console.log("Update successfully");
             navigate("/mainAdmin");
@@ -32,7 +32,7 @@ function EditProduct() {
     useEffect(() => {
         const getItem = async() => {
           try {
-            const res = await axios.get(`https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/items/${productId}`);
+            const res = await axios.get(`https://ttv-souvenir-backend.vercel.app/items/${productId}`);
             const data = res.data[0];
             setProduct(data);
           }

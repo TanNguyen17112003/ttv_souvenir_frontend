@@ -8,7 +8,7 @@ function Bears() {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get("https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/menu/bears");
+                const res = await axios.get("https://ttv-souvenir-backend.vercel.app/menu/bears");
                 const items = res.data;
                 console.log(items);
                 setProducts(items);

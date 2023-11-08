@@ -15,7 +15,7 @@ function ProductInCart({id, name, link, number, cost}) {
         }
     }
     const updateProductNumber = () => {
-        axios.post("https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/cart/number", { numberOfProduct: numberOfProduct, email: userEmail, idProduct: id })
+        axios.post("https://ttv-souvenir-backend.vercel.app/cart/number", { numberOfProduct: numberOfProduct, email: userEmail, idProduct: id })
             .then((response) => {
                 // Handle success if needed
                 console.log(response)
@@ -28,7 +28,7 @@ function ProductInCart({id, name, link, number, cost}) {
     };
     const handleRemoveProduct = async () => {
         try {
-            await axios.delete(`https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/cart/remove/${userEmail}/${id}`)
+            await axios.delete(`https://ttv-souvenir-backend.vercel.app/cart/remove/${userEmail}/${id}`)
             console.log("Remove Product succeeded");
             window.location.reload();
         }

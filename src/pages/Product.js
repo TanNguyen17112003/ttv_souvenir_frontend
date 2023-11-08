@@ -23,7 +23,7 @@ function Product() {
   useEffect(() => {
     const getItem = async() => {
       try {
-        const res = await axios.get(`https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/items/${itemId}`);
+        const res = await axios.get(`https://ttv-souvenir-backend.vercel.app/items/${itemId}`);
         const data = res.data[0];
         setItem(data);
       }
@@ -41,7 +41,7 @@ function Product() {
     }
     console.log(orderInfo);
     try {
-      await axios.post("https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/order", orderInfo)
+      await axios.post("https://ttv-souvenir-backend.vercel.app/order", orderInfo)
       .then((res) => {
         if (res.status === 200) {
           console.log("Order succeeded");

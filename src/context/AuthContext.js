@@ -23,7 +23,7 @@ export const AuthProvider = ({children}) => {
   const register = async (email, pwd) => {
     
     try {
-      await axios.post("https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/signup", {email, pwd})
+      await axios.post("https://ttv-souvenir-backend.vercel.app/signup", {email, pwd})
       .then((res) => {
         if (res.status === 200) {
           navigate("/login");
@@ -40,7 +40,7 @@ export const AuthProvider = ({children}) => {
 
   const login = async (email, pwd) => {
     try {
-      await axios.post("https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/login", {email, pwd})
+      await axios.post("https://ttv-souvenir-backend.vercel.app/login", {email, pwd})
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem('userEmail', email);

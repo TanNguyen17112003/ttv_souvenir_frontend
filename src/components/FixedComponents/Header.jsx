@@ -20,7 +20,7 @@ function Header() {
   const userEmail = localStorage.getItem("userEmail");
   
   
-  const result = axios.get(`https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/cart/${userEmail}`);
+  const result = axios.get(`https://ttv-souvenir-backend.vercel.app/cart/${userEmail}`);
 
   result.then((response) => {
     let aa = response.data[0].sumProduct;

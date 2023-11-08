@@ -14,7 +14,7 @@ function AdminHome() {
         const getCustomer = async () => {
             try {
                 const resCustomer = await axios.get(
-                    "https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/customers"
+                    "https://ttv-souvenir-backend.vercel.app//customers"
                 );
                 setTotalCustomer(resCustomer.data[0].totalCustomer);
             } catch (e) {
@@ -24,7 +24,7 @@ function AdminHome() {
         const getProduct = async () => {
             try {
                 const resProduct = await axios.get(
-                    "https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/products"
+                    "https://ttv-souvenir-backend.vercel.app/products"
                 );
                 setTotalProduct(resProduct.data[0].totalProduct);
             } catch (e) {
@@ -34,7 +34,7 @@ function AdminHome() {
         const getFeedback = async () => {
             try {
                 const resFeedback = await axios.get(
-                    "https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/feedbacks"
+                    "https://ttv-souvenir-backend.vercel.app/feedbacks"
                 );
                 setTotalFeedback(resFeedback.data[0].totalFeedback);
             } catch (e) {

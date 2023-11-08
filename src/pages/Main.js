@@ -15,7 +15,7 @@ function Main() {
   useEffect(() => {
     const getItems = async() => {
       try {
-        const res = await axios.get("https://ttvsouvenir2-backend-lg3evg5l2-tan-nguyens-projects-04e006d1.vercel.app/items");
+        const res = await axios.get("https://ttv-souvenir-backend.vercel.app/items");
         setItems(res.data);
         console.log(items);
       }
