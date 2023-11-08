@@ -16,7 +16,7 @@ function Main() {
     const getItems = async() => {
       try {
         const res = await axios.get("https://ttv-souvenir-backend.vercel.app/items");
-        setItems(res.data);
+        setItems(res?.data);
         console.log(items);
       }
       catch(err) {
