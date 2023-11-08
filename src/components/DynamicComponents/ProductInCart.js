@@ -1,24 +1,26 @@
 import {React, useState} from 'react'
 import axios from 'axios';
 
-function ProductInCart({id, name, link, number, cost}) {
+function ProductInCart({id, name, link, number, cost, updateCurrentNumber}) {
     const userEmail = localStorage.getItem("userEmail");
     const [numberOfProduct, setNumberOfProduct] = useState(number)
     const handleIncrease = () => {
         const nextNumber = numberOfProduct + 1;
         setNumberOfProduct(nextNumber);
+        updateCurrentNumber(nextNumber);
     }
     const handleDecrease = () => {
         if (numberOfProduct > 1) {
             const prevNumber = numberOfProduct - 1;
             setNumberOfProduct(prevNumber);
+            updateCurrentNumber(prevNumber);
         }
     }
     const updateProductNumber = () => {
         axios.post("https://ttv-souvenir-backend.vercel.app/cart/number", { numberOfProduct: numberOfProduct, email: userEmail, idProduct: id })
             .then((response) => {
                 // Handle success if needed
-                console.log(response)
+                console.log(response);
                 window.location.reload();
             })
             .catch((error) => {

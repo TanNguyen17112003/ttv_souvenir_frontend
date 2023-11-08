@@ -25,7 +25,7 @@ function Slide({data}) {
       <BsArrowRightCircleFill className='absolute w-8 h-8 right-[20px] text-white hover:cursor-pointer z-3' onClick={handleRightArrow}/>
       <span className='flex absolute bottom-[1rem]'>
         {data.map((_, idx) => {
-          return <button key={idx} onClick={() => setSlide(idx)} className= {slide === idx ? 'bg-white h-[0.5rem] w-[0.5rem] rounded-full border-0 outline-0 my-0 mx-[0.2rem] cursor-pointer' : 'h-[0.5rem] w-[0.5rem] rounded-full border-0 outline-0 my-0 mx-[0.2rem] cursor-pointer bg-neutral-600'}></button>
+          return <button key={idx} onClick={() => setSlide(idx)} className= {slide === idx ? 'bg-red-500 h-[1rem] w-[1rem] rounded-full border-0 outline-0 my-0 mx-[0.2rem] cursor-pointer' : 'h-[1rem] w-[1rem] rounded-full border-0 outline-0 my-0 mx-[0.2rem] cursor-pointer bg-neutral-600'}></button>
         })}
       </span>
    </div>

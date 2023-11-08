@@ -1,4 +1,4 @@
-import {React,  useState} from 'react'
+import {React,  useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import axios from 'axios';
 function Header() {
   const [sumProduct, setSumProduct] = useState(0);
   const [showListProduct, setShowListProduct] = useState(false);
+  const [listProducts, setListProducts] = useState([]);
   const {logout} = useAuth();
   const navigate = useNavigate();
   console.log(showListProduct);
@@ -19,15 +20,25 @@ function Header() {
   }
   const userEmail = localStorage.getItem("userEmail");
   
-  
+  useEffect(() => {
+    const res = axios.get(`https://ttv-souvenir-backend.vercel.app/cartProduct/${userEmail}`);
+    res.then((res) => {
+        let ArrayProducts = res.data;
+        setListProducts(ArrayProducts);
+    })
+    .catch((e) => {
+        console.error(e);
+    })
+}
+,[])
   const result = axios.get(`https://ttv-souvenir-backend.vercel.app/cart/${userEmail}`);
-
   result.then((response) => {
     let aa = response.data[0].sumProduct;
     setSumProduct(aa);
 }).catch((error) => {
     console.error(error);
 });
+
   const handleShowCart = () => {
     const test = !showListProduct;
     setShowListProduct(test);
@@ -81,7 +92,7 @@ function Header() {
                 onClick={() => handleShowCart()}
                 className='mr-[15px] text-[30px] text-[#81d4ad] hover:cursor-pointer'
               />
-              {showListProduct && sumProduct > 0 && <ProductsCart />}
+              {showListProduct && sumProduct > 0 && <ProductsCart listProducts={listProducts}/>}
             </div>
             <div className='flex flex-col'>
               <span className='text-[#81d4ad] text-[16px] mb-[5px]'>Xin chào {userEmail}</span>
