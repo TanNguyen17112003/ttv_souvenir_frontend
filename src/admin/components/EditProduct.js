@@ -19,7 +19,7 @@ function EditProduct() {
         if (newCost !== null) {
             values["cost"] = parseInt(newCost);
         }
-        await axios.put(`https://ttv-souvenir-backend.vercel.app/${productId}`, values)
+        await axios.put(`https://ttv-souvenir-backend.vercel.app/products/${productId}`, values)
         .then(res => {
             console.log("Update successfully");
             navigate("/mainAdmin");
