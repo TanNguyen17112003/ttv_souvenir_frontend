@@ -23,7 +23,7 @@ function Product() {
   useEffect(() => {
     const getItem = async() => {
       try {
-        const res = await axios.get(`https://ttv-souvenir-backend.vercel.app/items/${itemId}`);
+        const res = await axios.get(`http://localhost:3400/items/${itemId}`);
         const data = res.data[0];
         setItem(data);
       }
@@ -41,7 +41,7 @@ function Product() {
     }
     console.log(orderInfo);
     try {
-      await axios.post("https://ttv-souvenir-backend.vercel.app/order", orderInfo)
+      await axios.post("http://localhost:3400/cart", orderInfo)
       .then((res) => {
         if (res.status === 200) {
           console.log("Order succeeded");
@@ -62,7 +62,7 @@ function Product() {
       <div className='flex py-[20px] px-[200px] h-[500px]'>
         <div className='w-[500px] h-full'>
           <img className='w-full h-full object-cover' 
-            src={item.link}
+            src={item.Anh}
             alt="Error picture" />
         </div>
         <div className='ml-[40px] flex flex-col'>
@@ -75,11 +75,15 @@ function Product() {
           </div>
           <h3
             className='font-bold uppercase text-[28px] mb-[10px]'
-          >{item.name}</h3>
-          <span>Mã SP: {item.id}</span>
+          >{item.TenSP}</h3>
+          <span>Mã SP: {item.MaSP}</span>
           <h3
             className='text-[red] font-bold text-[24px] mt-[20px]'
-          >{item.cost} đ</h3>
+          >{item.GiaGoc} đ</h3>
+          <h3
+            className='mt-3 mb-2 font-bold text-red-500'
+          >Kích cỡ: {item.KichCo}</h3>
+          <p className='w-[500px]'>Đây là sản phẩm {item.TenSP} của hệ thống TTV Souvenir - một trong những sản phẩm bán chạy nhất hệ thống. Vui lòng đặt hàng để sở hữu sản phẩm</p>
           <div className='flex mt-[30px] items-center'>
             <span className='p-[10px] border-[1px] border-solid border-[black] bg-zinc-300 cursor-pointer'
                   onClick={reduceCount}
@@ -92,7 +96,7 @@ function Product() {
           {userEmail && 
             <button
               onClick={handleSubmitOrder} 
-              className='uppercase text-center mt-[30px] bg-[#81d4ad] px-2 py-3 rounded-[15px] text-white font-bold hover:bg-black hover:text-white w-[130px]'
+              className='uppercase text-center mt-[30px] bg-[#81d4ad] px-2 py-3 rounded-[15px] text-white font-bold hover:bg-black hover:text-white w-[300px]'
             >
               thêm vào giỏ hàng
             </button>

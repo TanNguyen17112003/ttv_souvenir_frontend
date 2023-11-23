@@ -11,6 +11,7 @@ function EditProduct() {
     const [product, setProduct] = useState({});
     const [newCost, setNewCost] = useState(null);
     const [newName, setNewName] = useState(null);
+    const [newSize, setNewSize] = useState(null)
     const handleUpdate = async () => {
         let values = {};
         if (newName !== null) {
@@ -19,7 +20,10 @@ function EditProduct() {
         if (newCost !== null) {
             values["cost"] = parseInt(newCost);
         }
-        await axios.put(`https://ttv-souvenir-backend.vercel.app/products/${productId}`, values)
+        if (newSize !== null) {
+            values["size"] = newSize;
+        }
+        await axios.put(`http://localhost:3400/products/${productId}`, values)
         .then(res => {
             console.log("Update successfully");
             navigate("/mainAdmin");
@@ -32,7 +36,7 @@ function EditProduct() {
     useEffect(() => {
         const getItem = async() => {
           try {
-            const res = await axios.get(`https://ttv-souvenir-backend.vercel.app/items/${productId}`);
+            const res = await axios.get(`http://localhost:3400/items/${productId}`);
             const data = res.data[0];
             setProduct(data);
           }
@@ -44,7 +48,7 @@ function EditProduct() {
       },[])
     return (
         <div
-            className="relative bg-gray-200 h-screen flex items-center"
+            className="relative bg-no-repeat bg-cover bg-[url('https://e0.pxfuel.com/wallpapers/513/180/desktop-wallpaper-among-trees.jpg')] h-screen flex items-center"
         >
             <div
                 onClick={() => {
@@ -52,33 +56,21 @@ function EditProduct() {
                 }}
                 className="absolute cursor-pointer right-[30px] top-[20px] w-[50px] h-[50px]"
             >
-                <HiX className="w-full h-full" />
+                <HiX className="w-full h-full text-white hover:text-green-300" />
             </div>
             <div
-                className="flex p-10 bg-white w-[600px] mx-auto gap-4 h-[400px]"
+                className="flex p-10 bg-white w-[600px] mx-auto gap-4 h-[400px] items-center"
             >
                 <div
                     className="w-1/2"
                 >
-                    <img className="mb-4" src={product.link} />
-                    <label
-                        for="files"
-                        className="cursor-pointer border-2 p-2 rounded-lg font-bold bg-black text-white"
-                    >
-                        Chọn hình ảnh thay thế
-                    </label>
-                    <input 
-                        id="files" 
-                        type="file"  
-                        className="mt-3 invisible" 
-                        accept="image/png, image/jpg"
-                    />
+                    <img className="mb-4" src={product.Anh} />
                 </div>
                 <div className="flex flex-col gap-3 w-1/2">
                     <h3 className="uppercase font-bold text-center">điều chỉnh thông tin</h3>
                     <h4
                         className="text-red-500 font-bold"
-                    >Giá</h4>
+                    >Giá Gốc</h4>
                     <input 
                         type="text" 
                         className="w-full border-2 p-2"
@@ -91,6 +83,14 @@ function EditProduct() {
                         type="text" 
                         className="w-full border-2 p-2"
                         onChange={(e) => setNewName(e.target.value)}
+                    />
+                     <h4
+                        className="text-red-500 font-bold"
+                    >Kích cỡ</h4>
+                    <input 
+                        type="text" 
+                        className="w-full border-2 p-2"
+                        onChange={(e) => setNewSize(e.target.value)}
                     />
                     <button
                         className="p-3 bg-green-200 border-2 rounded-lg font-bold hover:bg-black hover:text-white mt-6"

@@ -19,7 +19,7 @@ function Contact() {
         }
         console.log(contactInfo);
         try {
-            const response = await axios.post("https://ttv-souvenir-backend.vercel.app/contact", contactInfo);
+            const response = await axios.post("http://localhost:3400/contact", contactInfo);
             console.log('Response:', response.data); // Log the response data for debugging
             if (response.status === 200) {
                 console.log('Done');

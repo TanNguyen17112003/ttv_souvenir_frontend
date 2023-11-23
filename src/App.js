@@ -11,7 +11,10 @@ import Contact from './pages/Contact';
 import LoginAdmin from './admin/pages/LoginAdmin';
 import MainAdmin from './admin/pages/MainAdmin';
 import EditProduct from './admin/components/EditProduct';
-import {AuthProvider} from './context/AuthContext'
+import {AuthProvider} from './context/AuthContext';
+import Order from './pages/Order';
+import OrderDetail from './pages/OrderDetail';
+import Voucher from './pages/Voucher';
 function App() {
   return (
       <BrowserRouter>
@@ -27,6 +30,9 @@ function App() {
             <Route path='/loginAdmin' element={<LoginAdmin />} />
             <Route path='/mainAdmin' element={<MainAdmin />} />
             <Route path='/mainAdmin/:id' element={<EditProduct />} />
+            <Route path='/order' element={<Order />} />
+            <Route path='/order/:idOrder' element={<OrderDetail />} />
+            <Route path='/voucher' element={<Voucher />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

@@ -12,7 +12,6 @@ function Header() {
   const [listProducts, setListProducts] = useState([]);
   const {logout} = useAuth();
   const navigate = useNavigate();
-  console.log(showListProduct);
   const handleLogout = () => {
     logout();
     window.location.reload();
@@ -21,7 +20,7 @@ function Header() {
   const userEmail = localStorage.getItem("userEmail");
   
   useEffect(() => {
-    const res = axios.get(`https://ttv-souvenir-backend.vercel.app/cartProduct/${userEmail}`);
+    const res = axios.get(`http://localhost:3400/cartProduct/${userEmail}`);
     res.then((res) => {
         let ArrayProducts = res.data;
         setListProducts(ArrayProducts);
@@ -31,7 +30,7 @@ function Header() {
     })
 }
 ,[])
-  const result = axios.get(`https://ttv-souvenir-backend.vercel.app/cart/${userEmail}`);
+  const result = axios.get(`http://localhost:3400/cart/${userEmail}`);
   result.then((response) => {
     let aa = response.data[0].sumProduct;
     setSumProduct(aa);
@@ -62,22 +61,28 @@ function Header() {
       <div className="header-menu font-bold uppercase flex items-center justify-center">
           <Link 
             to='/menu'
-            className='px-[40px] text-[#81d4ad]'
+            className='px-[25px] text-[#81d4ad]'
           >
             Phân loại sản phẩm
+          </Link>
+          <Link
+            to='/order'
+            className='px-[25px] text-[#81d4ad]'
+          >
+            Đơn hàng
           </Link>
           <Link 
           
             to='/news'
-            className='px-[40px] text-[#81d4ad]'
+            className='px-[25px] text-[#81d4ad]'
           >
             Tin tức
           </Link>
           <Link 
-         className='px-[40px] text-[#81d4ad]'
-         to='/contact'
+         className='px-[25px] text-[#81d4ad]'
+         to='/voucher'
           >
-            Liên hệ
+            Ưu đãi
           </Link>
       </div>
       <div className='ml-[200px]'>
@@ -110,19 +115,19 @@ function Header() {
           <>
             <Link
               to="/login"
-              className="mr-[30px] bg-[#81d4ad] text-white font-bold border-[2px] p-[10px] rounded-[20px] hover:bg-black hover:text-white"
+              className="mr-[20px] bg-[#81d4ad] text-white font-bold border-[2px] p-[10px] rounded-[20px] hover:bg-black hover:text-white"
             >
               Đăng nhập
             </Link>
             <Link
               to="/register"
-              className="font-bold bg-[#81d4ad] text-white border-[2px] p-[10px] rounded-[20px]  hover:bg-black hover:text-white"
+              className="font-bold bg-[#81d4ad] text-white border-[2px] p-[10px] rounded-[20px] hover:bg-black hover:text-white"
             >
               Đăng ký
             </Link>
             <Link
               to="/loginAdmin"
-              className="font-bold ml-[30px] text-black p-[10px] bg-gray-300 rounded-[20px] hover:text-white hover:bg-black"
+              className="font-bold ml-[20px] text-black p-[10px] bg-gray-300 rounded-[20px] hover:text-white hover:bg-black"
             >
               Đăng nhập quản trị viên
             </Link>

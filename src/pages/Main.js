@@ -15,7 +15,7 @@ function Main() {
   useEffect(() => {
     const getItems = async() => {
       try {
-        const res = await axios.get("https://ttv-souvenir-backend.vercel.app/items");
+        const res = await axios.get("http://localhost:3400/items");
         setItems(res.data);
         console.log(items);
       }
@@ -56,7 +56,7 @@ function Main() {
         </div>
         {/* Standard */}
         <div className='flex text-center justify-between  py-10 px-20'>
-          <div className='flex flex-col justify-center items-center w-[33.33%]'>
+          <div className='flex flex-col justify-center items-center w-[33.33%] hover:bg-red-500 cursor-pointer border-2  p-4'>
               <FaRegListAlt 
                 size= '2rem'
                 className='mb-[10px] text-[#81d4ad]'
@@ -77,7 +77,7 @@ function Main() {
                 Cam kết sản phẩm chính hãng từ nhiều khu vực trên thế giới như Việt Nam, Châu Âu, Trung Quốc,... 
               </p>
           </div>
-          <div className='flex flex-col justify-center items-center w-[33.33%]'>
+          <div className='flex flex-col justify-center items-center w-[33.33%] hover:bg-red-500 cursor-pointer border-y-2  p-4'>
               <FaCarSide
                 size= '2rem'
                 className='mb-[10px] text-[#81d4ad]'
@@ -96,7 +96,7 @@ function Main() {
                 className='text-[12px]'
               >TTV Souvenir nhận được nhiều phản hồi tích cực từ khách hàng cả trong nước lẫn nước ngoài</p>
           </div>
-          <div className='flex flex-col justify-center items-center w-[33.33%]'>
+          <div className='flex flex-col justify-center items-center w-[33.33%] hover:bg-red-500 cursor-pointer border-2  p-4'>
               <FaPhoneAlt
                 size= '2rem'
                 className='mb-[10px] text-[#81d4ad]'
@@ -118,7 +118,7 @@ function Main() {
               </p>
           </div>
         </div>
-        <h1 className='font-bold uppercase pl-[70px] py-[20px] text-[24px]'>sản phẩm mới</h1>
+        <h1 className='font-bold uppercase pl-[70px] py-[20px] text-[24px] text-center'>sản phẩm mới của cửa TTV Souvenir</h1>
         {/* List item latest */}
         <LatestItems items={items} />
         <p className='text-center uppercase text-[20px] py-[10px] text-[#81d4ad] font-bold'><Link to='/menu'>Xem thêm...</Link></p>

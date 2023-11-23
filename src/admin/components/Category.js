@@ -23,7 +23,7 @@ function Category() {
         if (productIdToRemove) {
             try {
                 await axios.delete(
-                    `https://ttv-souvenir-backend.vercel.app/products/${productIdToRemove}`
+                    `http://localhost:3400/products/${productIdToRemove}`
                 );
                 console.log("Success");
                 window.location.reload();
@@ -42,7 +42,7 @@ function Category() {
     useEffect(() => {
         // Fetch data from API based on selected category
         const fetchData = async () => {
-            let apiUrl = "https://ttv-souvenir-backend.vercel.app/menu/";
+            let apiUrl = "http://localhost:3400/menu/";
             apiUrl += selectedCategory;
             const response = await fetch(apiUrl);
             const data = await response.json();
@@ -54,12 +54,12 @@ function Category() {
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const filteredProducts = products
         .filter((product) =>
-            product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            product.TenSP.toLowerCase().includes(searchTerm.toLowerCase())
         )
         .slice(indexOfFirstProduct, indexOfLastProduct);
     const totalPages = Math.ceil(
         products.filter((product) =>
-            product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            product.TenSP.toLowerCase().includes(searchTerm.toLowerCase())
         ).length / productsPerPage
     );
     const renderPageNumbers = Array.from(
@@ -123,6 +123,9 @@ function Category() {
                         <th className="border-2  text-white p-2 w-[20%]">
                             Giá
                         </th>
+                        <th className="border-2  text-white p-2 w-[20%]">
+                            Kích cỡ
+                        </th>
                         <th className="border-2  text-white p-2 w-[15%]">
                             Điều chỉnh
                         </th>
@@ -133,25 +136,26 @@ function Category() {
                 </thead>
                 <tbody>
                     {filteredProducts.map((product) => (
-                        <tr key={product.id} className="text-center ">
+                        <tr key={product.MaSP} className="text-center ">
                             <td className="border-2 border-gray-200 p-2 ">
-                                {product.id}
+                                {product.MaSP}
                             </td>
                             <td className="border-2 border-gray-200 p-2">
                                 <img
-                                    src={product.link}
-                                    alt={product.name}
+                                    src={product.Anh}
+                                    alt={product.TenSP}
                                     className="w-16 h-16 object-cover"
                                 />
                             </td>
                             <td className="border-2 border-gray-200 p-2">
-                                {product.name}
+                                {product.TenSP}
                             </td>
-                            <td className="border-2 border-gray-200 p-2">{`${product.cost} đ`}</td>
+                            <td className="border-2 border-gray-200 p-2">{`${product.GiaGoc} đ`}</td>
+                            <td className="border-2 border-gray-200 p-2">{product.KichCo}</td>
                             <td className="border-2 border-gray-200 p-2">
                                 <button
                                     className="p-2 bg-green-100 rounded-lg font-bold hover:bg-green-400 hover:text-white"
-                                    onClick={() => navigate(`/mainAdmin/${product.id}`)}
+                                    onClick={() => navigate(`/mainAdmin/${product.MaSP}`)}
                                 >
                                     Điều chỉnh
                                 </button>
@@ -160,7 +164,7 @@ function Category() {
                                 <button
                                     className="px-4 py-2 bg-red-100 rounded-lg font-bold hover:bg-red-400 hover:text-white"
                                     onClick={() =>
-                                        handleOpenRemoveDialog(product.id)
+                                        handleOpenRemoveDialog(product.MaSP)
                                     }
                                 >
                                     Xóa

@@ -8,7 +8,7 @@ function Animals() {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get("https://ttv-souvenir-backend.vercel.app/menu/animals");
+                const res = await axios.get("http://localhost:3400/menu/animals");
                 const items = res.data;
                 console.log(items);
                 setProducts(items);
@@ -24,13 +24,13 @@ function Animals() {
     return (
         <div className='px-[20px] py-[10px] grid grid-cols-4 '>
             {products.map((item) => (
-                    <Link className='cursor-pointer hover:border-slate-400 flex flex-col justify-center items-center border-2 border-solid border-slate-300  h-[400px]'key={item.id} to={`../items/${item.id}`}>
+                    <Link className='cursor-pointer hover:border-slate-400 flex flex-col justify-center items-center border-2 border-solid border-slate-300  h-[400px]'key={item.MaSP} to={`../items/${item.MaSP}`}>
                             <div className='w-[80%] h-[250px] mb-[20px]'>
-                                <img src={item.link} alt="" className='h-full w-full object-fill'/>
+                                <img src={item.Anh} alt="" className='h-full w-full object-fill'/>
                             </div>
                             <h2
                                 className='uppercase font-bold mb-[10px]'
-                            >{item.name}</h2>
+                            >{item.TenSP}</h2>
                             <div className='flex text-[yellow] text-[30px] mb-[10px]'>
                                 <FaStar />
                                 <FaStar />
@@ -40,7 +40,7 @@ function Animals() {
                             </div>
                             <span
                                 className='text-[20px] font-bold'
-                            >{`${item.cost}đ`}</span>
+                            >{`${item.GiaGoc}đ`}</span>
                     </Link>
                 ))
             }

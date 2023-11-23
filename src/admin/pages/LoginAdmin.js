@@ -10,7 +10,7 @@ function LoginAdmin() {
         e.preventDefault();
         const adminInfo = { email: email, pwd: pwd };
         await axios
-            .post("https://ttv-souvenir-backend.vercel.app/loginAdmin", adminInfo)
+            .post("http://localhost:3400/loginAdmin", adminInfo)
             .then((res) => {
                 if (res.status === 200) {
                     localStorage.setItem("adminEmail", email);
