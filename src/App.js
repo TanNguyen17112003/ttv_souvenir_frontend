@@ -6,7 +6,6 @@ import Store from './pages/Store';
 import Product from './pages/Product';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import News from './pages/News';
 import Contact from './pages/Contact';
 import LoginAdmin from './admin/pages/LoginAdmin';
 import MainAdmin from './admin/pages/MainAdmin';
@@ -14,7 +13,7 @@ import EditProduct from './admin/components/EditProduct';
 import {AuthProvider} from './context/AuthContext';
 import Order from './pages/Order';
 import OrderDetail from './pages/OrderDetail';
-import Voucher from './pages/Voucher';
+import Coupon from './pages/Coupon';
 function App() {
   return (
       <BrowserRouter>
@@ -23,7 +22,6 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/' element={<Main />} />
-            <Route path='/news' element={<News /> } />
             <Route path='/contact' element={<Contact />} />
             <Route path='/menu' element={<Store />} />
             <Route path='/items/:id' element={<Product />} />
@@ -32,7 +30,7 @@ function App() {
             <Route path='/mainAdmin/:id' element={<EditProduct />} />
             <Route path='/order' element={<Order />} />
             <Route path='/order/:idOrder' element={<OrderDetail />} />
-            <Route path='/voucher' element={<Voucher />} />
+            <Route path='/coupon' element={<Coupon />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

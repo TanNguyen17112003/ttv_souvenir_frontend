@@ -24,7 +24,7 @@ function KeyChains() {
     return (
         <div className='px-[20px] py-[10px] grid grid-cols-4 '>
             {products.map((item) => (
-                    <Link className='cursor-pointer hover:border-slate-400 flex flex-col justify-center items-center border-2 border-solid border-slate-300  h-[400px]'key={item.MaSP} to={`../items/${item.MaSP}`}>
+                    <Link className='bg-white cursor-pointer hover:border-green-500 hover:bg-green-500 flex flex-col justify-center items-center border-2 border-solid border-slate-300  h-[400px]'key={item.MaSP} to={`../items/${item.MaSP}`}>
                             <div className='w-[80%] h-[250px] mb-[20px]'>
                                 <img src={item.Anh} alt="" className='h-full w-full object-fill'/>
                             </div>

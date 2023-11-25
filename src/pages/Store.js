@@ -25,7 +25,7 @@ function  Store() {
   }
   return (
     <WithWrap>
-      <div className='max-w-[100%] mx-auto my-0 flex'>
+      <div className='max-w-[100%] mx-auto my-0 flex bg-slate-200'>
           <Sidebar options={options} setSelectedOption={setSelectedOption} selectedOption={selectedOption}/>
         <div className='w-[80%]'>
           {componentList[selectedOption]}

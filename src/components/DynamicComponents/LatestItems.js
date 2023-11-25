@@ -11,7 +11,7 @@ function LatestItems({ items }) {
         <Link 
           key={item.MaSP} 
           to={`items/${item.MaSP}`}
-          className='hover:border-slate-400 flex flex-col justify-center items-center h-[400px] border-2 border-solid border-slate-300 w-[280px]'
+          className='hover:border-green-500 hover:bg-green-500 flex flex-col justify-center items-center h-[400px] border-2 border-solid border-slate-300 w-[280px] hover:shadow-2xl bg-white'
         >
               <div className='w-[80%] h-[250px] mb-[10px]'>
                 <img src={item.Anh} alt='' className='h-full w-full object-cover' />

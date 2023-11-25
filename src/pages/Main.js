@@ -27,7 +27,7 @@ function Main() {
   },[])
   return (
     <WithWrap>
-      <div className='bg-neutral-200'>
+      <div className='bg-slate-200'>
         {/* Slide banner */}
         <div 
           className='flex w-full justify-center items-center pb-10 mx-auto h-[600px]'

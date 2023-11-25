@@ -30,7 +30,7 @@ function OrderItem({MaDH, GiaTriTong, GiaTriUuDai, NgayTaoDonHang, TrangThai}) {
     const navigate = useNavigate();
     const date = new Date(NgayTaoDonHang)
     const day = date.getDate();
-    const month = date.getMonth();
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const formattedDate = `${day}/${month}/${year}`
     const randomColor = getRandomColor();

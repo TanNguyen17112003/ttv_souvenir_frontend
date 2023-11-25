@@ -3,11 +3,11 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 import WithWrap from '../components/wrap/WithWrap';
 import OrderDetailProduct from './OrderDetailProduct';
-import { response } from 'express';
 
 function OrderDetail() {
   const params = useParams();
-  const userEmail = localStorage.getItem('userEmail')
+  const userEmail = localStorage.getItem('userEmail');
+  const [statusOrder, setStatusOrder] = useState('');
   const [voucherPrice, setVoucherPrice] = useState(0);
   const [productDetail, setProductDetail] = useState([]);
   const idOrder = params.idOrder;
@@ -32,15 +32,16 @@ function OrderDetail() {
       console.log(e)
     })
   }
-  // const handleConfirmOrder = async () => {
-  //   await axios.put(`http://localhost:3400/order/${idOrder}`)
-  //   .then(response => {
-  //     window.location.reload();
-  //   })
-  //   .catch(e => {
-  //     console.log(e)
-  //   }) 
-  // }
+  const handleConfirmOrder = async () => {
+    await axios.put(`http://localhost:3400/order/${idOrder}`)
+    .then(response => {
+      alert(`Cảm ơn bạn đã thanh toán đơn hàng ${idOrder}`);
+      window.location.reload();
+    })
+    .catch(e => {
+      console.log(e)
+    }) 
+  }
   useEffect(() => {
     const getDetailOrder = async () => {
       try {
@@ -64,7 +65,18 @@ function OrderDetail() {
     );
     setTotalPrice(newTotalCost);
   }, [productDetail, currentNumbers]);
-
+  useEffect(() => {
+    const getStatus = async () => {
+        try {
+          const result = await axios.get(`http://localhost:3400/order/status/${idOrder}`);
+          setStatusOrder(result.data[0].TrangThai)
+        }
+        catch (e) {
+          console.log(e)
+        }
+    };
+    getStatus();
+  },[totalPrice])
   return (
     <WithWrap>
       {!userEmail ? (
@@ -73,16 +85,18 @@ function OrderDetail() {
         <div>
           {productDetail.length > 0 ? (
       <div className='p-10 flex gap-10 items-center'>
-        <div className='w-[40%] p-5 border-2  rounded-lg bg-white shadow-xl hover:shadow-2xl border-slate-400'>
+        <div className='w-[50%] p-5 border-2  rounded-lg bg-white shadow-xl hover:shadow-2xl border-slate-400'>
           <h2 className='text-center uppercase font-bold text-red-400 text-[24px]'>{`Đơn hàng ${idOrder}`}</h2>
           {productDetail.map((product, index) => (
-            <OrderDetailProduct key={index}  MaDH={idOrder} MaSP={product.MaSP} TenSP={product.TenSP} Anh={product.Anh} SoLuong={currentNumbers[index]} GiaBan={product.GiaBan} updateCurrentNumber={(newNumber) => updateCurrentNumber(index, newNumber)}/>
+            <OrderDetailProduct key={index}  MaDH={idOrder} MaSP={product.MaSP} TenSP={product.TenSP} Anh={product.Anh} SoLuong={currentNumbers[index]} GiaBan={product.GiaBan} TrangThai={statusOrder} updateCurrentNumber={(newNumber) => updateCurrentNumber(index, newNumber)}/>
           ))}
-          <button
-            onClick={handleRemoveOrder} 
-            className='p-4 bg-red-500 uppercase font-bold text-white hover:bg-black rounded-lg'>
-            Hủy đơn hàng
+          {statusOrder !== 'Đã Thanh Toán' ? (
+            <button
+              onClick={handleRemoveOrder} 
+              className='mt-5 p-4 bg-red-500 uppercase font-bold text-white hover:bg-black rounded-lg'>
+              Hủy đơn hàng
           </button>
+          ) : null}
         </div>
         <div className='p-5 border-2 border-slate-400 rounded-lg shadow-xl hover:shadow-2xl'>
           <h2 className='text-center uppercase text-blue-400 font-bold mb-5 text-[28px]'>hóa đơn</h2>
@@ -98,11 +112,14 @@ function OrderDetail() {
             <h3>Giá trị cuối cùng:</h3>
             <h3>{`${totalPrice - voucherPrice} đ`}</h3>
           </div>
-          <button
-            // onClick={handleConfirmOrder} 
+          {statusOrder !== 'Đã Thanh Toán' ? (
+            <button
+            onClick={handleConfirmOrder} 
             className='uppercase font-bold p-3 bg-green-200 rounded-lg hover:bg-black hover:text-white'>
             Thanh toán
           </button>
+          ) : null}
+          
         </div>
       </div>) : `Đơn hàng ${idOrder} không tồn tại trên hệ thống`}
         </div>

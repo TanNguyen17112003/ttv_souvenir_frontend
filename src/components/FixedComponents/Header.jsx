@@ -69,18 +69,11 @@ function Header() {
             to='/order'
             className='px-[25px] text-[#81d4ad]'
           >
-            Đơn hàng
-          </Link>
-          <Link 
-          
-            to='/news'
-            className='px-[25px] text-[#81d4ad]'
-          >
-            Tin tức
+            Đơn hàng của bạn
           </Link>
           <Link 
          className='px-[25px] text-[#81d4ad]'
-         to='/voucher'
+         to='/coupon'
           >
             Ưu đãi
           </Link>
