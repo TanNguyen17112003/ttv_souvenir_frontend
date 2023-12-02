@@ -13,7 +13,7 @@ function LoginAdmin() {
             .post("http://localhost:3400/loginAdmin", adminInfo)
             .then((res) => {
                 if (res.status === 200) {
-                    localStorage.setItem("adminEmail", email);
+                    sessionStorage.setItem("adminEmail", email);
                     navigate("/mainAdmin");
                     window.location.reload();
                 }

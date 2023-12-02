@@ -13,7 +13,7 @@ function ProductsCart({listProducts}) {
     const navigate = useNavigate();
     const [totalPrice, setTotalPrice] = useState(0);
     const [openRemoveAllProducts, setOpenRemoveAllProducts] = useState(false);
-    const userEmail = localStorage.getItem("userEmail");
+    const userEmail = sessionStorage.getItem("userEmail");
     const [currentNumbers, setCurrentNumbers] = useState(listProducts.map(product => product.SoLuong));
     const updateCurrentNumber = (index, newNumber) => {
         // Cập nhật giá tiền của sản phẩm cụ thể ở vị trí index trong listProducts

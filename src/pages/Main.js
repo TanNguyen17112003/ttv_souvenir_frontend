@@ -17,7 +17,6 @@ function Main() {
       try {
         const res = await axios.get("http://localhost:3400/items");
         setItems(res.data);
-        console.log(items);
       }
       catch(err) {
         console.error(err);

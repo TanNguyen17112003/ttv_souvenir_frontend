@@ -1,5 +1,5 @@
 import React from "react";
-import { HiHome, HiUser, HiGift, HiChat } from "react-icons/hi";
+import { HiHome, HiUser, HiGift, HiClipboardList, HiOutlineCube } from "react-icons/hi";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
@@ -31,19 +31,8 @@ function AdminHome() {
                 console.log(e);
             }
         };
-        const getFeedback = async () => {
-            try {
-                const resFeedback = await axios.get(
-                    "http://localhost:3400/feedbacks"
-                );
-                setTotalFeedback(resFeedback.data[0].totalFeedback);
-            } catch (e) {
-                console.log(e);
-            }
-        };
         getCustomer();
         getProduct();
-        getFeedback();
     }, []);
     return (
         <div className="p-[50px] h-screen">
@@ -54,12 +43,12 @@ function AdminHome() {
                 </h2>
             </div>
 
-            <ul className="flex gap-8 items-center">
+            <ul className="grid grid-cols-2 gap-8 items-center">
                 <li
                     onClick={() => {
                         setSelectedOption("Quản lý sản phẩm");
                     }}
-                    className="bg-blue-100 cursor-pointer w-1/3 p-[20px]"
+                    className="bg-blue-100 cursor-pointer p-[20px] h-[100px]"
                 >
                     <div className="flex mb-[30px]">
                         <div className="text-white mr-[10px] p-[10px] border-2 bg-blue-400 h-10">
@@ -73,43 +62,31 @@ function AdminHome() {
                             </h4>
                         </div>
                     </div>
-                    <div className="text-blue-400">
-                        <span className="mr-2 ">Tổng sản phẩm:</span>
-                        <span className="font-bold text-lg">
-                            {totalProduct}
-                        </span>
-                    </div>
+                   
                 </li>
                 <li
                     onClick={() => {
-                        setSelectedOption("Quản lý phản hồi");
+                        setSelectedOption("Quản lý doanh số");
                     }}
-                    className="bg-orange-100 cursor-pointer w-1/3 p-[20px]"
+                    className="bg-orange-100 cursor-pointer p-[20px] h-[100px]"
                 >
                     <div className="flex mb-[30px]">
                         <div className="text-white mr-[10px] p-[10px] border-2 bg-orange-400 h-10">
-                            <HiChat />
+                            <HiClipboardList />
                         </div>
                         <div>
-                            <h3 className="font-bold">Quản lý phản hồi</h3>
+                            <h3 className="font-bold">Quản lý doanh số</h3>
                             <h4 className="text-sm">
-                                Kiểm tra những bình luận của khách hàng và đưa
-                                ra những phản hồi tích cực cho từng khách hàng.
+                                Kiểm tra những sản phẩm bán chạy nhất với từng loại 
                             </h4>
                         </div>
-                    </div>
-                    <div className="text-orange-400">
-                        <span className="mr-2">Tổng bình luận:</span>
-                        <span className="font-bold text-lg">
-                            {totalFeedback}
-                        </span>
                     </div>
                 </li>
                 <li
                     onClick={() => {
                         setSelectedOption("Quản lý khách hàng");
                     }}
-                    className="bg-red-100 cursor-pointer w-1/3 p-[20px]"
+                    className="bg-red-100 cursor-pointer p-[20px] h-[100px]"
                 >
                     <div className="flex mb-[30px]">
                         <div className="text-white mr-[10px] p-[10px] border-2 bg-red-400 h-10">
@@ -124,11 +101,23 @@ function AdminHome() {
                             </h4>
                         </div>
                     </div>
-                    <div className="text-red-400">
-                        <span className="mr-2">Tổng khách hàng:</span>
-                        <span className="font-bold text-lg">
-                            {totalCustomer}
-                        </span>
+                </li>
+                <li
+                    onClick={() => {
+                        setSelectedOption("Quản lý ưu đãi");
+                    }}
+                    className="bg-green-100 cursor-pointer p-[20px] h-[100px]"
+                >
+                    <div className="flex mb-[30px]">
+                        <div className="text-white mr-[10px] p-[10px] border-2 bg-green-400 h-10">
+                            <HiOutlineCube />
+                        </div>
+                        <div>
+                            <h3 className="font-bold">Quản lý ưu đãi</h3>
+                            <h4 className="text-sm">
+                                Theo dõi thông tin cửa từng loại ưu đãi, thêm, xóa sửa
+                            </h4>
+                        </div>
                     </div>
                 </li>
             </ul>

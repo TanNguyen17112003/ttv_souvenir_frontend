@@ -17,7 +17,7 @@ function Header() {
     window.location.reload();
     navigate("/");
   }
-  const userEmail = localStorage.getItem("userEmail");
+  const userEmail = sessionStorage.getItem("userEmail");
   
   useEffect(() => {
     const res = axios.get(`http://localhost:3400/cartProduct/${userEmail}`);

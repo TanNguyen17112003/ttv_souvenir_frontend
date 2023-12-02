@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 
 function ProductInCart({ id, name, link, number, cost, updateCurrentNumber }) {
-    const userEmail = localStorage.getItem("userEmail");
+    const userEmail = sessionStorage.getItem("userEmail");
     const [openRemoveProduct, setOpenRemoveProduct] = useState(false);
     const [numberOfProduct, setNumberOfProduct] = useState(number);
     const handleIncrease = () => {

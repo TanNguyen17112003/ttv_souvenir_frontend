@@ -5,7 +5,7 @@ import axios from 'axios';
 import OrderItem from '../components/DynamicComponents/OrderItem';
 
 function Order() {
-  const userEmail = localStorage.getItem('userEmail');
+  const userEmail = sessionStorage.getItem('userEmail');
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [orderList, setOrderList] = useState([]);
   const [searchIdOrder, setSearchIdOrder] = useState(null);

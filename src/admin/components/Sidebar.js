@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import {HiHome, HiUser, HiGift, HiChat} from "react-icons/hi";
+import {HiHome, HiClipboardList, HiGift, HiUser, HiOutlineCube} from "react-icons/hi";
 import { useAuth } from '../../context/AuthContext';
 
 function Sidebar() {
   const {options, setSelectedOption, selectedOption} = useAuth();
   const navigate = useNavigate();
-  const adminEmail = localStorage.getItem("adminEmail");
+  const adminEmail = sessionStorage.getItem("adminEmail");
   const handleClickOptions = (option) => {
     setSelectedOption(option);
   }
@@ -17,7 +17,7 @@ function Sidebar() {
         <h4 className='italic'>{adminEmail}</h4>
         <button 
                 onClick={() => {
-                  localStorage.removeItem("adminEmail");
+                  sessionStorage.removeItem("adminEmail");
                   navigate("/loginAdmin");
                   window.location.reload();
                 }}
@@ -34,7 +34,7 @@ function Sidebar() {
             onClick={() => handleClickOptions(option)}
           >
             <div className='mr-[10px]'>
-              {index === 0 ? <HiHome /> : (index === 1 ? <HiGift /> : (index === 2 ? <HiChat /> : <HiUser />)) }
+              {index === 0 ? <HiHome /> : (index === 1 ? <HiGift /> : (index === 2 ? <HiClipboardList /> : (index === 3 ? <HiUser /> : <HiOutlineCube />))) }
             </div>
             {option}
           </li>

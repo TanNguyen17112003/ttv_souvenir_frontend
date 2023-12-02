@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router';
 
 function HeaderAdmin() {
   const navigate = useNavigate();
-  const adminEmail = localStorage.getItem("adminEmail");
+  const adminEmail = sessionStorage.getItem("adminEmail");
   const handleLogoutAdmin = () => {
-    localStorage.removeItem("adminEmail");
+    sessionStorage.removeItem("adminEmail");
     navigate("/loginAdmin");
     window.location.reload();
   }

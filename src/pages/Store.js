@@ -11,17 +11,17 @@ import Zodiacs from '../category/Zodiacs';
 import { useState } from 'react';
 import WithWrap from '../components/wrap/WithWrap';
 function  Store() {
-  const options = ["Animals", "Bears", "Bags", "Coasters", "Flowers", "Hats", "KeyChains", "Zodiacs"];
+  const options = ["Thú", "Gấu", "Túi xách", "Lót ly", "Hoa", "Mũ", "Móc khóa", "Cung hoàng đạo"];
   const [selectedOption, setSelectedOption] = useState("Animals");
   const componentList = {
-    "Animals": <Animals />,
-    "Bags": <Bags />,
-    "Bears": <Bears />,
-    "Coasters": <Coasters />,
-    "Flowers": <Flowers />,
-    "Hats": <Hats />,
-    "KeyChains": <KeyChains />,
-    "Zodiacs": <Zodiacs />
+    "Thú": <Animals />,
+    "Túi xách": <Bags />,
+    "Gấu": <Bears />,
+    "Lót ly": <Coasters />,
+    "Hoa": <Flowers />,
+    "Mũ": <Hats />,
+    "Móc khóa": <KeyChains />,
+    "Cung hoàng đạo": <Zodiacs />
   }
   return (
     <WithWrap>

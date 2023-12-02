@@ -6,18 +6,20 @@ import AdminHome from '../admin/components/AdminHome';
 import Category from '../admin/components/Category';
 import Feedback from '../admin/components/Feedback';
 import User from '../admin/components/User';
+import Coupon from '../admin/components/Coupon';
 const AuthContext = createContext();
 export const useAuth = () => {
   return useContext(AuthContext);
 }
 export const AuthProvider = ({children}) => {
-  const options = ["Trang chủ", "Quản lý sản phẩm", "Quản lý phản hồi", "Quản lý khách hàng"];
+  const options = ["Trang chủ", "Quản lý sản phẩm", "Quản lý doanh số", "Quản lý khách hàng", "Quản lý ưu đãi"];
   const [selectedOption, setSelectedOption] = useState("Trang chủ");
   const components = {
     "Trang chủ": <AdminHome />,
     "Quản lý sản phẩm": <Category />,
-    "Quản lý phản hồi": <Feedback />,
-    "Quản lý khách hàng": <User />
+    "Quản lý doanh số": <Feedback />,
+    "Quản lý khách hàng": <User />,
+    "Quản lý ưu đãi": <Coupon />
   }
   const navigate = useNavigate();
   const register = async (email, pwd) => {
@@ -43,7 +45,7 @@ export const AuthProvider = ({children}) => {
       await axios.post("http://localhost:3400/login", {email, pwd})
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem('userEmail', email);
+          sessionStorage.setItem('userEmail', email);
           navigate("/");
           window.location.reload();
         }
@@ -58,7 +60,7 @@ export const AuthProvider = ({children}) => {
   }
 
   const logout = () => {
-    localStorage.removeItem("userEmail");
+    sessionStorage.removeItem("userEmail");
     navigate("/");
   }
   const value = {

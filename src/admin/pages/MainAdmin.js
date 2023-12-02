@@ -8,7 +8,7 @@ import User from "../components/User";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 function MainAdmin() {
-  const adminEmail = localStorage.getItem("adminEmail");
+  const adminEmail = sessionStorage.getItem("adminEmail");
   const { components, selectedOption } = useAuth();
   return (
     <div>

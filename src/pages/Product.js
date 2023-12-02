@@ -6,7 +6,7 @@ import { FaMinus, FaPlus } from 'react-icons/fa';
 import WithWrap from '../components/wrap/WithWrap';
 function Product() {
   
-  const userEmail = localStorage.getItem('userEmail');
+  const userEmail = sessionStorage.getItem('userEmail');
   const params = useParams();
   const itemId = params.id;
   const [item, setItem] = useState({});
@@ -83,6 +83,11 @@ function Product() {
           <h3
             className='mt-3 mb-2 font-bold text-red-500'
           >Kích cỡ: {item.KichCo}</h3>
+          <h3
+            className='mt-3 mb-2 font-bold text-blue-500'
+          >
+            Số lượng tồn kho: {item.SoLuongTonKho}
+          </h3>
           <p className='w-[500px]'>Đây là sản phẩm {item.TenSP} của hệ thống TTV Souvenir - một trong những sản phẩm bán chạy nhất hệ thống. Vui lòng đặt hàng để sở hữu sản phẩm</p>
           <div className='flex mt-[30px] items-center'>
             <span className='p-[10px] border-[1px] border-solid border-[black] bg-zinc-300 cursor-pointer'

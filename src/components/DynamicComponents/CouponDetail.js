@@ -22,7 +22,7 @@ function CouponDetail({MaUuDai, GiaTri, SoTienToiThieuApDung, SoTienToiDaApDung,
     const formattedEndDate = `${endDate.getDate()}/${endDate.getMonth()+1}/${endDate.getFullYear()}`
     const randomColor = getRandomColor();
     const [totalNumber, setTotalNumber] = useState(null);
-    const userEmail = localStorage.getItem('userEmail');
+    const userEmail = sessionStorage.getItem('userEmail');
     const handleGetCoupon = async () => {
         try {
             await axios.post(`http://localhost:3400/coupon/getCoupon/${MaUuDai}`, {email: userEmail})
