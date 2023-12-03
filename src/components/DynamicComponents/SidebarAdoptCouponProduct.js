@@ -12,6 +12,7 @@ const getRandomColor = () => {
     return colorList[randomIndex];
 }
 function SidebarAdoptCouponProduct(props) {
+    const userEmail = sessionStorage.getItem("userEmail");
     const randomColor = getRandomColor();
     const handleAdoptCoupon = async () => {
         const idOrder = props.idOrder;
@@ -24,6 +25,16 @@ function SidebarAdoptCouponProduct(props) {
         .catch(e => {
             console.log(e)
         })
+    }
+    const handleRemoveCouponOfUser = async (idCoupon) => {
+        try {
+            await axios.delete(`http://localhost:3400/coupon/user/${idCoupon}/${userEmail}`);
+            alert(`Bạn đã xóa ưu đãi ${idCoupon}`)
+            window.location.reload()
+        }
+        catch(e) {
+            console.error(e)
+        }
     }
     return (
         (props.SoLuong > 0) ? (<div 
@@ -42,12 +53,21 @@ function SidebarAdoptCouponProduct(props) {
                 <h3 className="font-bold">Số lượng:</h3>
                 <span className="text-red-500 font-bold">{props.SoLuong}</span>
             </div>
-            <button 
-                className="font-bold text-white bg-red-400 p-2 rounded-lg mt-3 hover:bg-black"
-                onClick={handleAdoptCoupon}
-            >
-                Áp dụng
-            </button>
+            <div>
+                <button 
+                    className="font-bold text-white bg-blue-400 p-2 rounded-lg mt-3 hover:bg-black mr-5"
+                    onClick={handleAdoptCoupon}
+                >
+                    Áp dụng
+                </button>
+                <button
+                    className="font-bold text-white bg-red-400 p-2 rounded-lg mt-3 hover:bg-black"
+                    onClick={() => handleRemoveCouponOfUser(props.MaUuDai)}
+                >
+                    Xóa
+                </button>
+            </div>
+            
         </div>) : null
        
     );

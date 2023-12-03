@@ -20,6 +20,24 @@ function Feedback() {
         };
         getBestSellerProduct();
     }, [selectedCategory, month, year]);
+    const handleGiveBestSeller = async (idProduct) => {
+        try {
+            await axios.post(`http://localhost:3400/product/giveBestller/${idProduct}/${month}`);
+            window.location.reload();
+        }
+        catch(e) {
+            console.error(e)
+        }
+    }
+    const handleRemoveProduct = async (idProduct) => {
+        try {
+            await axios.delete(`http://localhost:3400/products/${idProduct}`);
+            window.location.reload();
+        }
+        catch(e) {
+            console.error(e)
+        }
+    }
     return (
         <div className="p-[50px] min-h-screen">
             <div className="flex items-center mb-[50px]">
@@ -71,7 +89,7 @@ function Feedback() {
                         <div className="w-[10%]">
                             <img src={deft.Anh} className="w-full h-[100px]" />
                         </div>
-                        <div className="flex flex-col w-[90%]">
+                        <div className="flex flex-col w-[70%]">
                             <div className="flex gap-2">
                                 <span className="font-bold">Tên sản phẩm:</span>
                                 <h2>{deft.TenSP}</h2>
@@ -89,6 +107,20 @@ function Feedback() {
                                 <h3>{deft.so_luong_da_ban}</h3>
                             </div>
                             
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <button 
+                                className="p-3 rounded-lg bg-blue-600 uppercase font-bold text-white text-[12px]"
+                                onClick={() => handleGiveBestSeller(deft.MaSP)}
+                            >
+                                Gán bestSeller
+                            </button>
+                            <button 
+                                className="p-3 rounded-lg bg-red-600 uppercase font-bold text-white text-[12px]"
+                                onClick={() => handleRemoveProduct(deft.MaSP)}
+                            >
+                                Xóa
+                            </button>
                         </div>
                     </div>
                 ))}

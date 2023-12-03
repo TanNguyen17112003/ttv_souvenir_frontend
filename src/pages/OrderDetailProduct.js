@@ -41,7 +41,7 @@ function OrderDetailProduct({MaDH, MaSP, TenSP, Anh, SoLuong, GiaBan, TrangThai,
     }
     
     return (
-        <div className="flex py-5 justify-between items-center hover:cursor-pointer w-[650px] shadow-xl hover:shadow-2xl">
+        <div className="flex py-5 justify-between items-center hover:cursor-pointer w-[700px] shadow-xl hover:shadow-2xl">
         <div className="w-[100px] h-[100px] mr-5">
             <img src={Anh}  className="w-full h-full object-cover" />
         </div>
