@@ -54,7 +54,7 @@ function SidebarAdoptCoupon({ status1, totalPrice, idOrder, handleAdoptVoucher }
                         />
                         <button className="bg-blue-400 p-2 text-white font-bold w-[40%] rounded-lg hover:bg-black" onClick={() => setSortByGiaTri(!sortByGiaTri)}>Sắp xếp</button>
                     </div>
-                    {couponUserList.length > 0 ? (
+                    {sortedCoupons.length > 0 ? (
                         <div className='flex gap-5'>
                         {sortedCoupons.map(coupon => (
                             <SidebarAdoptCouponProduct

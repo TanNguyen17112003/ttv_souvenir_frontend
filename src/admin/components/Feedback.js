@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { HiClipboardList } from "react-icons/hi";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 function Feedback() {
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("tất cả");
     const [month, setMonth] = useState((new Date()).getMonth());
@@ -89,7 +91,7 @@ function Feedback() {
                         <div className="w-[10%]">
                             <img src={deft.Anh} className="w-full h-[100px]" />
                         </div>
-                        <div className="flex flex-col w-[70%]">
+                        <div className="flex flex-col w-[65%]">
                             <div className="flex gap-2">
                                 <span className="font-bold">Tên sản phẩm:</span>
                                 <h2>{deft.TenSP}</h2>
@@ -110,13 +112,19 @@ function Feedback() {
                         </div>
                         <div className="flex flex-col gap-3">
                             <button 
-                                className="p-3 rounded-lg bg-blue-600 uppercase font-bold text-white text-[12px]"
+                                className="hover:bg-black p-3 rounded-lg bg-blue-600 uppercase font-bold text-white text-[12px]"
                                 onClick={() => handleGiveBestSeller(deft.MaSP)}
                             >
                                 Gán bestSeller
                             </button>
+                            <button
+                                className="hover:bg-black p-3 rounded-lg bg-orange-600 uppercase font-bold text-white text-[12px]"
+                                onClick={() => navigate(`/mainAdmin/${deft.MaSP}`)}
+                            >
+                                Điều chỉnh thông tin
+                            </button>
                             <button 
-                                className="p-3 rounded-lg bg-red-600 uppercase font-bold text-white text-[12px]"
+                                className="hover:bg-black p-3 rounded-lg bg-red-600 uppercase font-bold text-white text-[12px]"
                                 onClick={() => handleRemoveProduct(deft.MaSP)}
                             >
                                 Xóa
